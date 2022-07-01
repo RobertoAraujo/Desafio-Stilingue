@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 @Entity
 @Table(name = "Conversa")
-public class Conversa  implements Serializable {
+public class ConversaEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -21,7 +21,7 @@ public class Conversa  implements Serializable {
     @Enumerated (EnumType.STRING)
     private Status status;
 
-    public Conversa() {
+    public ConversaEntity() {
     }
 
     public Long getId() {
@@ -60,7 +60,7 @@ public class Conversa  implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Conversa conversa = (Conversa) o;
+        ConversaEntity conversa = (ConversaEntity) o;
         return Objects.equals(id, conversa.id) && Objects.equals(data, conversa.data) && Objects.equals(mensagem, conversa.mensagem) && status == conversa.status;
     }
 

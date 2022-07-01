@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 @Entity
-@Table(name = "Conversa")
+@Table(name = "conversa")
 public class ConversaEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -18,8 +18,10 @@ public class ConversaEntity implements Serializable {
     private LocalDate data;
     @Column (name = "mensagem")
     private String mensagem;
-    @Enumerated (EnumType.STRING)
-    private Status status;
+
+//    @Column(name = "status")
+//    @Enumerated(EnumType.STRING)
+    private String status;
 
     public ConversaEntity() {
     }
@@ -48,11 +50,11 @@ public class ConversaEntity implements Serializable {
         this.mensagem = mensagem;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -71,7 +73,7 @@ public class ConversaEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Conversa{" +
+        return "ConversaEntity{" +
                 "id=" + id +
                 ", data=" + data +
                 ", mensagem='" + mensagem + '\'' +

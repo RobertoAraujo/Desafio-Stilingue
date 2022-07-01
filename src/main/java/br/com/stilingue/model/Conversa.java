@@ -2,16 +2,23 @@ package br.com.stilingue.model;
 
 import br.com.stilingue.constants.Status;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-
+@Entity
+@Table(name = "Conversa")
 public class Conversa  implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column (name = "data")
     private LocalDate data;
+    @Column (name = "mensagem")
     private String mensagem;
+    @Enumerated (EnumType.STRING)
     private Status status;
 
     public Conversa() {

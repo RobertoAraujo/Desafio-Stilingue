@@ -1,5 +1,5 @@
 package br.com.stilingue.constants;
 
 public enum Status {
-    ABERTO, FECHADO, ANDAMENTO
+    ABERTO, FECHADO, PENDENTE, RESPONDIDO, IGNORADO, EM_ESPERA
 }

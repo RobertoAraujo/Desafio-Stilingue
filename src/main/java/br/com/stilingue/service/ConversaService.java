@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ConversaService {
@@ -16,4 +17,12 @@ public class ConversaService {
     public List<ConversaEntity> findAll() {
         return conversaRepository.findAll();
     }
+    public Optional<ConversaEntity> findById(long id) {
+        return conversaRepository.findById(id);
+    }
+    public ConversaEntity save(ConversaEntity entity) {
+        conversaRepository.save(entity);
+        return entity;
+    }
+
 }

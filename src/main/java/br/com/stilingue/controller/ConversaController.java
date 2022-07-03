@@ -36,16 +36,12 @@ public class ConversaController {
         return conversaService.save(entity);
     }
     @PutMapping(value = "update/{id}")
-    public ConversaEntity update(@PathVariable String id,@RequestBody ConversaEntity conversa) {
-        return this.conversaService.updateConversa(Long.parseLong(id),conversa);
+    public ConversaEntity update(@PathVariable(value = "id") Long id,@RequestBody ConversaEntity conversa) {
+        return conversaService.updateConversa((id),conversa);
     }
     @DeleteMapping(value = "delete/{id}")
-    public List<ConversaEntity> deleteCourse(@PathVariable String id) {
-        if (id != null){
-            LOGGER.info("Buscando Conversas por Id.");
-            return this.conversaService.deleteConversa(Long.parseLong(id));
-        }
-        LOGGER.error("Fala ao busca o Id.");
-        return null;
+    public void deleteCourse(@PathVariable Long id) {
+        LOGGER.info("Buscando Conversas por Id.");
+        conversaService.deleteConversa((id));
     }
 }

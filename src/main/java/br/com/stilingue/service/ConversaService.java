@@ -1,7 +1,10 @@
 package br.com.stilingue.service;
 
+import br.com.stilingue.controller.ConversaController;
 import br.com.stilingue.model.ConversaEntity;
 import br.com.stilingue.repository.ConversaRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +14,18 @@ import java.util.Optional;
 
 @Service
 public class ConversaService {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConversaService.class);
     @Autowired
     private ConversaRepository conversaRepository;
 
     public List<ConversaEntity> findAll() {
         return conversaRepository.findAll();
     }
+
     public Optional<ConversaEntity> findById(long id) {
         return conversaRepository.findById(id);
     }
+
     public ConversaEntity save(ConversaEntity entity) {
         conversaRepository.save(entity);
         return entity;
@@ -31,24 +36,20 @@ public class ConversaService {
     public ConversaEntity updateConversa(long Id, ConversaEntity conversa) {
         List<ConversaEntity> list = conversaRepository.findAll();
         ConversaEntity c = null;
-        for (ConversaEntity conver: list){
-            if (conver.getId()==Id){
+        for (ConversaEntity conver : list) {
+            if (conver.getId() == Id) {
                 conver.setData(conver.getData());
                 conver.setMensagem(conver.getMensagem());
                 conver.setStatus(conver.getStatus());
-                conversa=conver;
+                conver = conversa;
+                conversaRepository.save(conver);
             }
         }
-        conversaRepository.save(conversa);
         return conversa;
     }
-    public List<ConversaEntity> deleteConversa(long Id) {
-        List<ConversaEntity> list = conversaRepository.findAll();
-        for (ConversaEntity conversa: list){
-            if (conversa.getId()== Id){
-                list.remove(conversa);
-            }
-        }
-        return list;
+
+    public void deleteConversa(long id) {
+        LOGGER.info("Id deletado com sucesso.");
+        conversaRepository.deleteById(id);
     }
 }

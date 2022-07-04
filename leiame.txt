@@ -1,0 +1,19 @@
+Contrato de uso da api
+
+http://localhost:8084/v1/conversa/listar
+
+http://localhost:8084/v1/conversa/inserir
+{
+    "data": "2022-07-04",
+    "mensagem": "Preciso que resolvam um problema. Estou bem chateado.",
+    "status": "Ignorado"
+}
+
+http://localhost:8084/v1/conversa/update/303 
+{
+    "data": "2022-07-04",
+    "mensagem": "erro....!!!!!!",
+    "status": "Ignorado"
+}
+
+script do banco no codigo /resourcer/script.sql
